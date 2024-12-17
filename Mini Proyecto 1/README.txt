@@ -1,0 +1,1 @@
+El CSV Gaia_NaN pesaba mucho para subirse con el codigo
