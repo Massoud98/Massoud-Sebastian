@@ -1,0 +1,69 @@
+Antes de empezar, se corrió el código para ver los resultados base, los cuales fueron los siguientes:
+Entrenamiento:
+
+Época [1/10], Pérdida: 0.3046
+Época [2/10], Pérdida: 0.1433
+Época [3/10], Pérdida: 0.0830
+Época [4/10], Pérdida: 0.0464
+Época [5/10], Pérdida: 0.0504
+Época [6/10], Pérdida: 0.0339
+Época [7/10], Pérdida: 0.1892
+Época [8/10], Pérdida: 0.0549
+Época [9/10], Pérdida: 0.0140
+Época [10/10], Pérdida: 0.1130
+
+Evaluación:
+Accuracy en el conjunto de prueba: 97.74%
+
+Después se empezó a modificar algún aspecto para ver los cambios que causarian. 
+
+2.1
+
+En este caso, se modifico el numero de neuronas por capa.
+
+2.2
+
+En este caso se modifico el numero de épocas. Primero, se cambio a la mitad de épocas, lo cual rindió los siguientes resultados:
+
+Entrenamiento:
+
+Época [1/5], Pérdida: 0.1253
+Época [2/5], Pérdida: 0.2770
+Época [3/5], Pérdida: 0.0615
+Época [4/5], Pérdida: 0.2725
+Época [5/5], Pérdida: 0.0202
+
+Evaluación:
+
+Accuracy en el conjunto de prueba: 97.04%
+
+Después, se cambio al doble de épocas, lo cual rindió los siguientes resultados:
+
+Entrenamiento:
+
+Época [1/20], Pérdida: 0.2765
+Época [2/20], Pérdida: 0.1206
+Época [3/20], Pérdida: 0.0189
+Época [4/20], Pérdida: 0.1237
+Época [5/20], Pérdida: 0.1359
+Época [6/20], Pérdida: 0.0156
+Época [7/20], Pérdida: 0.0352
+Época [8/20], Pérdida: 0.1229
+Época [9/20], Pérdida: 0.0176
+Época [10/20], Pérdida: 0.0839
+Época [11/20], Pérdida: 0.0911
+Época [12/20], Pérdida: 0.0673
+Época [13/20], Pérdida: 0.0364
+Época [14/20], Pérdida: 0.0167
+Época [15/20], Pérdida: 0.1600
+Época [16/20], Pérdida: 0.0765
+Época [17/20], Pérdida: 0.0032
+Época [18/20], Pérdida: 0.1419
+Época [19/20], Pérdida: 0.0153
+Época [20/20], Pérdida: 0.0247
+
+Evaluación:
+
+Accuracy en el conjunto de prueba: 97.95%
+
+Claramente se puede ver que en cuantas más épocas, mejor rinde el modelo, pero también se debe considerar que cada época hace que el modelo tome más tiempo. Se sugiere una cantidad de épocas de 15 ya que sería un numero mayor al original de 10 pero tampoco tomará mucho tiempo como el monto de 20 épocas. 
