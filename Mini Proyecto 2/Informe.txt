@@ -1,0 +1,102 @@
+Antes de empezar a hacer modificaciones, se hizo una prueba con las variables default. A continuacion los resultados sin modificaciones:
+
+Entrenamiento (6min):
+Época [1/10], Pérdida: 0.4286
+Época [2/10], Pérdida: 0.2331
+Época [3/10], Pérdida: 0.0618
+Época [4/10], Pérdida: 0.1140
+Época [5/10], Pérdida: 0.0864
+Época [6/10], Pérdida: 0.2709
+Época [7/10], Pérdida: 0.0723
+Época [8/10], Pérdida: 0.0221
+Época [9/10], Pérdida: 0.1134
+Época [10/10], Pérdida: 0.0137
+
+Evaluación (3sec):
+Accuracy en el conjunto de prueba: 97.53%
+
+CNN (6min):
+Epoch [1/10], Loss: 0.3432, Test Accuracy: 0.9750
+Epoch [2/10], Loss: 0.0882, Test Accuracy: 0.9846
+Epoch [3/10], Loss: 0.0606, Test Accuracy: 0.9873
+Epoch [4/10], Loss: 0.0474, Test Accuracy: 0.9876
+Epoch [5/10], Loss: 0.0398, Test Accuracy: 0.9882
+Epoch [6/10], Loss: 0.0358, Test Accuracy: 0.9892
+Epoch [7/10], Loss: 0.0299, Test Accuracy: 0.9900
+Epoch [8/10], Loss: 0.0262, Test Accuracy: 0.9899
+Epoch [9/10], Loss: 0.0226, Test Accuracy: 0.9902
+Epoch [10/10], Loss: 0.0205, Test Accuracy: 0.9903
+Final Test Accuracy: 0.9903
+
+
+La primera modificación que sea realizo fue el reducir la complejidad al recortar el numero de neuronas a la mitad. Esto nos retorno lo siguiente:
+
+Entrenamiento (3min):
+Época [1/10], Pérdida: 0.2280
+Época [2/10], Pérdida: 0.4683
+Época [3/10], Pérdida: 0.2064
+Época [4/10], Pérdida: 0.0963
+Época [5/10], Pérdida: 0.2732
+Época [6/10], Pérdida: 0.0627
+Época [7/10], Pérdida: 0.5239
+Época [8/10], Pérdida: 0.0228
+Época [9/10], Pérdida: 0.4440
+Época [10/10], Pérdida: 0.0734
+
+Evaluación (3sec):
+Accuracy en el conjunto de prueba: 97.17%
+
+Con esto, podemos ver que el entrenamiento fue el doble de rapido y a su vez, el accuracy bajo solo un 0.36%. Esto demuestra que el reducir la complejidad disminuyendo la cantidad de neuronas no afecta mucho el accuracy, pero si afecta la cantidad de tiempo que toma el entrenamiento. Por razones de tiempo, una menor cantidad de neuronas puede ser util si el tiempo es poco, pero de no ser el caso, la cantidad original o más neuronas serian una buena idea para considerar.
+
+La segunda modificación a realizarse fue el aumentar learning_rate de 0.001 a 0.01. Esto nos retorno lo siguiente:
+
+Entrenamiento (3min):
+Época [1/10], Pérdida: 0.7447
+Época [2/10], Pérdida: 1.1996
+Época [3/10], Pérdida: 0.7643
+Época [4/10], Pérdida: 0.8317
+Época [5/10], Pérdida: 1.0508
+Época [6/10], Pérdida: 1.0659
+Época [7/10], Pérdida: 0.7243
+Época [8/10], Pérdida: 0.6431
+Época [9/10], Pérdida: 0.7801
+Época [10/10], Pérdida: 0.8815
+
+Evaluación (2sec):
+Accuracy en el conjunto de prueba: 84.63%
+
+Esto si tuvo un efecto notable en el accuracy, pero no de la forma que se esperaba. Se esperaba que el aumentar el learning rate mejoraria el accuracy, pero en realidad termino reduciendo bastante el accuracy. En terminos de tiempo, tambien fue rapido pero no es recomendable debido a la baja en accuracy. De tener poco tiempo, se recomendaria usar la configuracion default y de no ser asi, se deberia disminuir el numero del learning rate.
+
+Despues se hicieron modificaciones al CNN, con la primera modificación siendo el reducir capas convolucionales a la mitad, lo cual nos dio el siguiente resultado:
+
+CNN (6min):
+Epoch [1/10], Loss: 0.3234, Test Accuracy: 0.9764
+Epoch [2/10], Loss: 0.0774, Test Accuracy: 0.9851
+Epoch [3/10], Loss: 0.0560, Test Accuracy: 0.9867
+Epoch [4/10], Loss: 0.0459, Test Accuracy: 0.9890
+Epoch [5/10], Loss: 0.0368, Test Accuracy: 0.9896
+Epoch [6/10], Loss: 0.0327, Test Accuracy: 0.9879
+Epoch [7/10], Loss: 0.0282, Test Accuracy: 0.9903
+Epoch [8/10], Loss: 0.0249, Test Accuracy: 0.9902
+Epoch [9/10], Loss: 0.0224, Test Accuracy: 0.9912
+Epoch [10/10], Loss: 0.0181, Test Accuracy: 0.9907
+Final Test Accuracy: 0.9907
+
+Este cambio nos demuestra que las capas convolucionales no tienen mucho efecto en el accuracy ya que solo hubo una mejora de 0.0004 asi que a menos que la red neuronal necesite hacer cosas muy complejas, la cantidad de capas convolucionales parece ser irrelevante al momento de ver un efecto en el accuracy o el tiempo que le toma llevar a cabo el entrenamiento. Por lo mismo, solo se recomienda cambiar la cantidad de capas convolucionales si la tarea que se llevara a cabo es muy compleja y se necesitaran mas capas.
+
+Finalmente, se decidio cambiar el optimizador de optim.Adam a optim.SGD como la ultima modifiación. Esto nos retorno los siguientes resultados:
+
+CNN (6min):
+Epoch [1/10], Loss: 2.2842, Test Accuracy: 0.3862
+Epoch [2/10], Loss: 2.2425, Test Accuracy: 0.5531
+Epoch [3/10], Loss: 2.1843, Test Accuracy: 0.5952
+Epoch [4/10], Loss: 2.0808, Test Accuracy: 0.6363
+Epoch [5/10], Loss: 1.8923, Test Accuracy: 0.6847
+Epoch [6/10], Loss: 1.5777, Test Accuracy: 0.7494
+Epoch [7/10], Loss: 1.1985, Test Accuracy: 0.7960
+Epoch [8/10], Loss: 0.9077, Test Accuracy: 0.8273
+Epoch [9/10], Loss: 0.7330, Test Accuracy: 0.8504
+Epoch [10/10], Loss: 0.6321, Test Accuracy: 0.8669
+Final Test Accuracy: 0.8669
+
+Si bien el cambio de optimizador causo un decline en el accuracy, se puede apreciar como con cada epoch el loss fue disminuyendo, lo cual podria ser debido a que el nuevo optimizador debia aprender desde cero mientras que el optimizador default pudo haber sido entrenado de antes. De todas formas, con la informacion que tenemos presente, el cambio de optimizador no es favorable.
